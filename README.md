@@ -56,7 +56,7 @@ Program menentukan persentase diskon secara otomatis berdasarkan total belanja p
 ### 1. Clone & Install Dependencies
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/Vizzly-nM09/Kuis_Express-JS.git
 cd Kuis_ExpressJS
 npm install
 ```
