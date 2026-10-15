@@ -1,47 +1,6 @@
-﻿const Transaksi = require("../../models/transaksi/transaksiModel");
-
-function hitungDiskon(total_belanja) {
-  let diskon_persen = 0;
-
-  if (total_belanja > 4000000) {
-    diskon_persen = 20;
-  } else if (total_belanja >= 3000000) {
-    diskon_persen = 10;
-  } else if (total_belanja >= 2000000) {
-    diskon_persen = 9;
-  } else if (total_belanja >= 1000000) {
-    diskon_persen = 5;
-  } else {
-    diskon_persen = 0;
-  }
-
-  const jumlah_diskon = (total_belanja * diskon_persen) / 100;
-  const total_bayar = total_belanja - jumlah_diskon;
-
-  return {
-    diskon_persen,
-    jumlah_diskon,
-    total_bayar,
-  };
-}
-
-function formatRupiah(amount) {
-  if (amount === null || amount === undefined) return null;
-  const num = Number(amount);
-  const formatted = num.toLocaleString("id-ID", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-  return `Rp ${formatted}`;
-}
-
-function formatDate(date) {
-  if (!date) return null;
-  const d = new Date(date);
-  if (isNaN(d.getTime())) return null;
-  const pad = (n) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-}
+const Transaksi = require("../../models/transaksi/transaksiModel");
+const { hitungDiskon } = require("../../services/diskonService");
+const { formatRupiah, formatDate } = require("../../utils/formatter");
 
 const resolvers = {
   Query: {
@@ -61,6 +20,7 @@ const resolvers = {
   },
 
   Mutation: {
+    // TAMBAH TRANSAKSI (Sesuai slide: tambahTransaksi(total_belanja: 5000000))
     tambahTransaksi: async (_, { total_belanja }) => {
       const { diskon_persen, jumlah_diskon, total_bayar } =
         hitungDiskon(total_belanja);
