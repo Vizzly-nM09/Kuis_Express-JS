@@ -42,11 +42,15 @@ Program menentukan persentase diskon secara otomatis berdasarkan total belanja p
 │   ├── models/
 │   │   └── transaksi/
 │   │       └── transaksiModel.js      # Sequelize model for transaksi (UUID, Decimal, Timestamps)
+│   ├── services/
+│   │   └── diskonService.js           # Business logic: discount calculation & tier rules
+│   ├── utils/
+│   │   └── formatter.js               # Utility helpers: Rupiah currency & Datetime formatting
 │   └── graphql/
 │       ├── schema.js                  # Root GraphQL schema definition
 │       └── transaksi/
 │           ├── schema.js              # GraphQL schema for transaksi
-│           └── resolvers.js           # Resolvers with discount logic & Rupiah formatters
+│           └── resolvers.js           # Resolvers for queries, mutations & field formatting
 ```
 
 ---
