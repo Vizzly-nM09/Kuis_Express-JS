@@ -116,7 +116,7 @@ mutation {
 {
   "data": {
     "tambahTransaksi": {
-      "id_transaksi": "1e4acf2e-bc52-4830-858b-796d6346c09b",
+      "id_transaksi": "<ID_TRANSAKSI>",
       "total_belanja": "Rp 5.000.000,00",
       "diskon_persen": "20%",
       "jumlah_diskon": "Rp 1.000.000,00",
